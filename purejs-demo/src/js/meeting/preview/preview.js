@@ -17,7 +17,7 @@ const initPreviewButtons = () => {
 
         const micButton = document.getElementById('js-preview-mic-button');
         const micIcon = document.getElementById('js-preview-mic-icon');
-        
+
         let isMuted = true;
 
         let isButtonAlreadyClicked = false;
@@ -26,7 +26,7 @@ const initPreviewButtons = () => {
             micIcon.classList.toggle('fa-microphone');
             micIcon.classList.toggle('fa-microphone-slash');
             micButton.classList.toggle('meeting-control-button__off');
-            
+
             if (prevVolumeAnimationStyle) {
                 micIcon.classList.toggle(prevVolumeAnimationStyle);
                 prevVolumeAnimationStyle = '';
@@ -63,7 +63,7 @@ const initPreviewButtons = () => {
             prevVolumeAnimationStyle = newVolumeAnimationStyle;
         };
 
-        const startVolumeAnimation = () => { 
+        const startVolumeAnimation = () => {
             if (!volumeAnimation) {
                 volumeAnimation = setInterval(animateMicVolume, VOLUME_ANIMATION_INTERVAL_MS);
             }
@@ -91,7 +91,7 @@ const initPreviewButtons = () => {
             if (!isButtonAlreadyClicked) {
                 // Blocks logic from executing again if already in progress
                 isButtonAlreadyClicked = true;
-                
+
                 try {
                     if (!isPreviewAudioConnected) {
                         await audioTrack.start();
@@ -156,11 +156,11 @@ const initPreviewButtons = () => {
                 isButtonAlreadyClicked = true;
                 try {
                     if (isPreviewAudioConnected) {
-                      audioTrack.stop();
-                      isPreviewAudioConnected = false;
-          }
-          if (isWebcamOn) {
-            videoTrack.stop();
+                        audioTrack.stop();
+                        isPreviewAudioConnected = false;
+                    }
+                    if (isWebcamOn) {
+                        videoTrack.stop();
                     }
                     switchPreviewToLoadingView();
                     await joinSession(zmClient);

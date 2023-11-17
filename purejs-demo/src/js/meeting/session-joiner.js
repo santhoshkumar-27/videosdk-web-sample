@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import sessionConfig from '../config';
 import { generateSessionToken } from '../tool';
+import { generateSignature } from '../toolc';
 import initClientEventListeners from './session/client-event-listeners';
 import initButtonClickHandlers from './session/button-click-handlers';
 import state from './session/simple-state';
@@ -16,21 +17,25 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
  *      5) Joins the audio stream on mute
  */
 const joinSession = async (zmClient) => {
-  // const videoSDKLibDir = '/lib';
+  const videoSDKLibDir = '/lib';
   const zmClientInitParams = {
-    language: 'en-US'
-    // dependentAssets: `${window.location.origin}${videoSDKLibDir}`
+    language: 'en-US',
+    dependentAssets: `${window.location.origin}${videoSDKLibDir}`
   };
-  const sessionToken = generateSessionToken(
+  const sessionToken = generateSignature(
     sessionConfig.sdkKey,
     sessionConfig.sdkSecret,
     sessionConfig.topic,
-    sessionConfig.password,
+    sessionConfig.role,
     sessionConfig.sessionKey,
-    '',
+    sessionConfig.user_identity,
     '',
     uuidv4()
   );
+
+  // const sessionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoieFVwSko1U2ZtUlBoclgybG5ET2p3dmFsVEZmS3RrMTlzRnRvIiwidHBjIjoiQ29vbCBDYXJzIiwicm9sZV90eXBlIjoxLCJzZXNzaW9uX2tleSI6InNlc3Npb24xMjMiLCJ1c2VyX2lkZW50aXR5IjoidXNlcjEyMyIsInZlcnNpb24iOjEsImlhdCI6MTcwMDIyNjYxOCwiZXhwIjoxNzAwMjMzODE4fQ.fXcm01kLn7h0QD3c2ilW_gYpV8mMoEa7jvQwT4l-yeo'
+
+  
 
   let mediaStream;
 
