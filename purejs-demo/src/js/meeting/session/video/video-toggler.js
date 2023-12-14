@@ -66,7 +66,7 @@ export const toggleSelfVideo = async (mediaStream, isVideoOn) => {
           VIDEO_CANVAS_DIMS.Height / 2,
           0,
           0,
-          VideoQuality.Video_360P
+          VideoQuality.Video_720P
         );
       } else {
         await mediaStream.renderVideo(
@@ -76,7 +76,7 @@ export const toggleSelfVideo = async (mediaStream, isVideoOn) => {
           VIDEO_CANVAS_DIMS.Height,
           VIDEO_CANVAS_DIMS.Width / 2,
           0,
-          VideoQuality.Video_360P
+          VideoQuality.Video_720P
         );
       }
     }
@@ -107,7 +107,7 @@ export const toggleParticipantVideo = async (mediaStream, userId, isVideoOn) => 
       VIDEO_CANVAS_DIMS.Height,
       0,
       0,
-      VideoQuality.Video_360P
+      VideoQuality.Video_720P
     );
   } else {
     await mediaStream.stopRenderVideo(VIDEO_CANVAS, userId);

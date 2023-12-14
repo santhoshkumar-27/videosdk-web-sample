@@ -33,9 +33,7 @@ const joinSession = async (zmClient) => {
     uuidv4()
   );
 
-  // const sessionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoieFVwSko1U2ZtUlBoclgybG5ET2p3dmFsVEZmS3RrMTlzRnRvIiwidHBjIjoiQ29vbCBDYXJzIiwicm9sZV90eXBlIjoxLCJzZXNzaW9uX2tleSI6InNlc3Npb24xMjMiLCJ1c2VyX2lkZW50aXR5IjoidXNlcjEyMyIsInZlcnNpb24iOjEsImlhdCI6MTcwMDIyNjYxOCwiZXhwIjoxNzAwMjMzODE4fQ.fXcm01kLn7h0QD3c2ilW_gYpV8mMoEa7jvQwT4l-yeo'
-
-  
+  // const sessionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoieFVwSko1U2ZtUlBoclgybG5ET2p3dmFsVEZmS3RrMTlzRnRvIiwidHBjIjoidGVzdGluZzExOSIsInJvbGVfdHlwZSI6MSwic2Vzc2lvbl9rZXkiOiJ0aGlydW1tIiwidXNlcl9pZGVudGl0eSI6IjI1NDEyMzQiLCJ2ZXJzaW9uIjoxLCJpYXQiOjE3MDEyNDAwOTMsImV4cCI6MTcwMTI0NzI5M30.l8yE6-NHWZww69jf5ktAW9FNZsHdPSTeBCdB6jkcDlE'
 
   let mediaStream;
 
