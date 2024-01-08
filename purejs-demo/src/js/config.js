@@ -4,7 +4,7 @@ export default {
   topic: 'CoolCars1',
   role: 0,
   password: 'abc123',
-  name: 'use1234',
+  name: 'dummye',
   sessionKey: 'tewwwwsst',
-  user_identity: 'sohiel'
+  user_identity: 'dummye'
 };

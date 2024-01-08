@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import sessionConfig from '../config';
 import { generateSessionToken } from '../tool';
-import { generateSignature } from '../toolc';
+import { generateSignature, generateRandomName, generateRandomUsername } from '../toolc';
 import initClientEventListeners from './session/client-event-listeners';
 import initButtonClickHandlers from './session/button-click-handlers';
 import state from './session/simple-state';
@@ -22,6 +22,8 @@ const joinSession = async (zmClient) => {
     language: 'en-US',
     dependentAssets: `${window.location.origin}${videoSDKLibDir}`
   };
+  sessionConfig.user_identity = generateRandomUsername(12);
+  sessionConfig.name = generateRandomName(8);
   const sessionToken = generateSignature(
     sessionConfig.sdkKey,
     sessionConfig.sdkSecret,
@@ -33,8 +35,9 @@ const joinSession = async (zmClient) => {
     uuidv4()
   );
 
-  // const sessionToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoieFVwSko1U2ZtUlBoclgybG5ET2p3dmFsVEZmS3RrMTlzRnRvIiwidHBjIjoidGVzdGluZzExOSIsInJvbGVfdHlwZSI6MSwic2Vzc2lvbl9rZXkiOiJ0aGlydW1tIiwidXNlcl9pZGVudGl0eSI6IjI1NDEyMzQiLCJ2ZXJzaW9uIjoxLCJpYXQiOjE3MDEyNDAwOTMsImV4cCI6MTcwMTI0NzI5M30.l8yE6-NHWZww69jf5ktAW9FNZsHdPSTeBCdB6jkcDlE'
-
+  // const sessionToken =
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDM3NDY0MjIsImFwcF9rZXkiOiJ4VXBKSjVTZm1SUGhyWDJsbkRPand2YWxURmZLdGsxOXNGdG8iLCJyb2xlX3R5cGUiOjEsImlhdCI6MTcwMzczOTIyMiwidXNlcl9pZGVudGl0eSI6InVzZXIxMjMiLCJzZXNzaW9uX2tleSI6InNlc3Npb24xMjMiLCJ0cGMiOiJDb29sIENhcnMiLCJ2ZXJzaW9uIjoxfQ.D-5yEfLL25l0gen-QVtEPppd5xnFFiFUumcOlxrNnYs';
+  console.log('sessionToken', sessionToken);
   let mediaStream;
 
   const initAndJoinSession = async () => {
